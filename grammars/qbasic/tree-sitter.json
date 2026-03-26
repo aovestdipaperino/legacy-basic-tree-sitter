@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for QBasic",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/example/tree-sitter-basic"
+    }
+  },
+  "grammars": [
+    {
+      "name": "qbasic",
+      "scope": "source.qbasic",
+      "file-types": ["bas"],
+      "injection-regex": "qbasic"
+    }
+  ]
+}

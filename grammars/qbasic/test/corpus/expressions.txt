@@ -1,0 +1,131 @@
+================
+Integer arithmetic without line numbers
+================
+X = 2 + 3
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (literal
+                    (integer_literal))))
+              (expression
+                (primary_expression
+                  (literal
+                    (integer_literal)))))))))))
+
+================
+String variable assignment
+================
+A$ = "HELLO"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier)
+            (type_sigil))
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+Parenthesized expression
+================
+X = (1 + 2) * 3
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (expression
+                    (binary_expression
+                      (expression
+                        (primary_expression
+                          (literal
+                            (integer_literal))))
+                      (expression
+                        (primary_expression
+                          (literal
+                            (integer_literal))))))))
+              (expression
+                (primary_expression
+                  (literal
+                    (integer_literal)))))))))))
+
+================
+GOTO with label target
+================
+GOTO myLabel
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (goto_statement
+          (identifier))))))
+
+================
+Member access in expression
+================
+PRINT p.X
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (variable
+                    (identifier)
+                    (identifier)))))))))))
+
+================
+Member access assignment
+================
+p.X = 10
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier)
+            (identifier))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))

@@ -1,0 +1,234 @@
+================
+Block IF THEN ELSE END IF
+================
+IF X > 0 THEN
+PRINT "POS"
+ELSE
+PRINT "NEG"
+END IF
+
+---
+
+(program
+  (block_if_statement
+    (expression
+      (binary_expression
+        (expression
+          (primary_expression
+            (variable
+              (identifier))))
+        (expression
+          (primary_expression
+            (literal
+              (integer_literal))))))
+    (line
+      (statement_list
+        (statement
+          (print_statement
+            (print_list
+              (print_item
+                (expression
+                  (primary_expression
+                    (literal
+                      (string_literal))))))))))
+    (else_clause
+      (line
+        (statement_list
+          (statement
+            (print_statement
+              (print_list
+                (print_item
+                  (expression
+                    (primary_expression
+                      (literal
+                        (string_literal)))))))))))))
+
+================
+Block IF ELSEIF ELSE END IF
+================
+IF X > 0 THEN
+PRINT "POS"
+ELSEIF X = 0 THEN
+PRINT "ZERO"
+ELSE
+PRINT "NEG"
+END IF
+
+---
+
+(program
+  (block_if_statement
+    (expression
+      (binary_expression
+        (expression
+          (primary_expression
+            (variable
+              (identifier))))
+        (expression
+          (primary_expression
+            (literal
+              (integer_literal))))))
+    (line
+      (statement_list
+        (statement
+          (print_statement
+            (print_list
+              (print_item
+                (expression
+                  (primary_expression
+                    (literal
+                      (string_literal))))))))))
+    (elseif_clause
+      (expression
+        (binary_expression
+          (expression
+            (primary_expression
+              (variable
+                (identifier))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))))
+      (line
+        (statement_list
+          (statement
+            (print_statement
+              (print_list
+                (print_item
+                  (expression
+                    (primary_expression
+                      (literal
+                        (string_literal)))))))))))
+    (else_clause
+      (line
+        (statement_list
+          (statement
+            (print_statement
+              (print_list
+                (print_item
+                  (expression
+                    (primary_expression
+                      (literal
+                        (string_literal)))))))))))))
+
+================
+SELECT CASE with specifiers
+================
+SELECT CASE X
+CASE 1
+PRINT "ONE"
+CASE ELSE
+PRINT "OTHER"
+END SELECT
+
+---
+
+(program
+  (select_case_statement
+    (expression
+      (primary_expression
+        (variable
+          (identifier))))
+    (case_clause
+      (case_specifier
+        (expression
+          (primary_expression
+            (literal
+              (integer_literal)))))
+      (line
+        (statement_list
+          (statement
+            (print_statement
+              (print_list
+                (print_item
+                  (expression
+                    (primary_expression
+                      (literal
+                        (string_literal)))))))))))
+    (case_else_clause
+      (line
+        (statement_list
+          (statement
+            (print_statement
+              (print_list
+                (print_item
+                  (expression
+                    (primary_expression
+                      (literal
+                        (string_literal)))))))))))))
+
+================
+DO WHILE LOOP
+================
+DO WHILE X < 10
+X = X + 1
+LOOP
+
+---
+
+(program
+  (do_statement
+    (expression
+      (binary_expression
+        (expression
+          (primary_expression
+            (variable
+              (identifier))))
+        (expression
+          (primary_expression
+            (literal
+              (integer_literal))))))
+    (line
+      (statement_list
+        (statement
+          (let_statement
+            (variable
+              (identifier))
+            (expression
+              (binary_expression
+                (expression
+                  (primary_expression
+                    (variable
+                      (identifier))))
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer_literal))))))))))))
+
+================
+DO LOOP WHILE post-condition
+================
+DO
+X = X + 1
+LOOP WHILE X < 10
+
+---
+
+(program
+  (do_statement
+    (line
+      (statement_list
+        (statement
+          (let_statement
+            (variable
+              (identifier))
+            (expression
+              (binary_expression
+                (expression
+                  (primary_expression
+                    (variable
+                      (identifier))))
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer_literal))))))))))
+    (expression
+      (binary_expression
+        (expression
+          (primary_expression
+            (variable
+              (identifier))))
+        (expression
+          (primary_expression
+            (literal
+              (integer_literal))))))))

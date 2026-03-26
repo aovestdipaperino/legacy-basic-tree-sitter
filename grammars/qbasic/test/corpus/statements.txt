@@ -1,0 +1,200 @@
+================
+PRINT without line number
+================
+PRINT "Hello"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+CONST declaration
+================
+CONST PI = 3.14159
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (const_statement
+          (identifier)
+          (expression
+            (primary_expression
+              (literal
+                (float_literal)))))))))
+
+================
+SHARED statement
+================
+SHARED X, Y
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (shared_statement
+          (variable
+            (identifier))
+          (variable
+            (identifier)))))))
+
+================
+STATIC statement
+================
+STATIC X, Y
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (static_statement
+          (variable
+            (identifier))
+          (variable
+            (identifier)))))))
+
+================
+EXIT FOR
+================
+EXIT FOR
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (exit_statement)))))
+
+================
+EXIT DO
+================
+EXIT DO
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (exit_statement)))))
+
+================
+Label on its own line
+================
+myLabel:
+PRINT "Hello"
+
+---
+
+(program
+  (line
+    (label
+      (identifier)))
+  (line
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+Apostrophe comment after statement
+================
+X = 1 'SET X TO 1
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))))
+      (apostrophe_comment))))
+
+================
+DIM with AS type
+================
+DIM p AS Point
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (dim_statement
+          (dim_variable
+            (identifier)
+            (type_name
+              (identifier))))))))
+
+================
+FOR NEXT loop without line numbers
+================
+FOR I = 1 TO 10
+NEXT I
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (for_statement
+          (variable
+            (identifier))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))))))
+  (line
+    (statement_list
+      (statement
+        (next_statement
+          (variable
+            (identifier)))))))
+
+================
+GOSUB with label
+================
+GOSUB myHandler
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (gosub_statement
+          (identifier))))))

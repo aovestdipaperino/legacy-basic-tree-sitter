@@ -1,0 +1,37 @@
+DECLARE SUB PrintStars (n%)
+
+CONST TITLE$ = "QBASIC DEMO"
+PRINT TITLE$
+
+TYPE Point
+  X AS INTEGER
+  Y AS INTEGER
+END TYPE
+
+DIM p AS Point
+p.X = 10
+p.Y = 20
+
+FOR I% = 1 TO 5
+  CALL PrintStars(I%)
+NEXT I%
+
+SELECT CASE p.X
+CASE IS < 0
+  PRINT "NEGATIVE"
+CASE 0 TO 10
+  PRINT "SMALL"
+CASE ELSE
+  PRINT "BIG"
+END SELECT
+
+END
+
+SUB PrintStars (n%)
+  DIM s AS STRING
+  s = ""
+  DO WHILE LEN(s) < n%
+    s = s + "*"
+  LOOP
+  PRINT s
+END SUB

@@ -1,0 +1,89 @@
+================
+TYPE definition
+================
+TYPE Point
+X AS INTEGER
+Y AS INTEGER
+END TYPE
+
+---
+
+(program
+  (type_definition
+    name: (identifier)
+    (type_member
+      (identifier)
+      (type_name))
+    (type_member
+      (identifier)
+      (type_name))))
+
+================
+DIM with AS type
+================
+DIM p AS Point
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (dim_statement
+          (dim_variable
+            (identifier)
+            (type_name
+              (identifier))))))))
+
+================
+DIM SHARED with AS type
+================
+DIM SHARED count AS INTEGER
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (dim_statement
+          (dim_variable
+            (identifier)
+            (type_name)))))))
+
+================
+CONST with type sigil
+================
+CONST TITLE$ = "DEMO"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (const_statement
+          (identifier)
+          (type_sigil)
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+CONST numeric
+================
+CONST PI = 3.14159
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (const_statement
+          (identifier)
+          (expression
+            (primary_expression
+              (literal
+                (float_literal)))))))))
