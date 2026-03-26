@@ -1,6 +1,6 @@
 [package]
 name = "tree-sitter-gwbasic"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Tree-sitter grammar for GW-BASIC"
 license = "MIT"

@@ -17,6 +17,7 @@ function blockBody($) {
     $.block_if_statement,
     $.select_case_statement,
     $.do_statement,
+    $.metacommand,
     /\r?\n/,
   ));
 }
@@ -35,6 +36,7 @@ module.exports = grammar({
     [$.elseif_clause],
     [$.case_clause],
     [$.case_else_clause],
+    [$.system_variable, $.randomize_statement],
   ],
 
   rules: {
@@ -47,6 +49,7 @@ module.exports = grammar({
       $.sub_definition,
       $.function_definition,
       $.type_definition,
+      $.metacommand,
       $.line,
       /\r?\n/,
     )),
@@ -351,6 +354,98 @@ module.exports = grammar({
     goto_statement: $ => seq(kw("GOTO"), choice($.line_number, $.identifier)),
     gosub_statement: $ => seq(kw("GOSUB"), choice($.line_number, $.identifier)),
 
+    // ====== QuickBasic-specific statements ======
+
+    // Metacommands ($INCLUDE, $DYNAMIC, $STATIC) — higher precedence than apostrophe_comment
+    metacommand: $ => token(prec(2, choice(
+      seq("'", /[ \t]*/, /\$[Ii][Nn][Cc][Ll][Uu][Dd][Ee]/, /[ \t]*/, ":", /[ \t]*/, "'", /[^'\r\n]+/, "'"),
+      seq("'", /[ \t]*/, /\$[Dd][Yy][Nn][Aa][Mm][Ii][Cc]/),
+      seq("'", /[ \t]*/, /\$[Ss][Tt][Aa][Tt][Ii][Cc]/),
+    ))),
+
+    // REDIM [PRESERVE]
+    redim_statement: $ => seq(
+      kw("REDIM"), optional(kw("PRESERVE")),
+      commaSep1($.dim_variable),
+    ),
+
+    // ERASE (remove dynamic arrays)
+    erase_statement: $ => seq(kw("ERASE"), commaSep1($.identifier)),
+
+    // DEFtype (DEFINT, DEFLNG, DEFSNG, DEFDBL, DEFSTR)
+    deftype_statement: $ => seq(
+      choice(kw("DEFINT"), kw("DEFLNG"), kw("DEFSNG"), kw("DEFDBL"), kw("DEFSTR")),
+      commaSep1($.letter_range),
+    ),
+    letter_range: $ => seq(
+      /[a-zA-Z]/,
+      optional(seq("-", /[a-zA-Z]/)),
+    ),
+
+    // SLEEP
+    sleep_statement: $ => seq(kw("SLEEP"), optional($.expression)),
+
+    // SHELL
+    shell_statement: $ => seq(kw("SHELL"), optional($.expression)),
+
+    // RANDOMIZE
+    randomize_statement: $ => seq(kw("RANDOMIZE"), optional(choice(kw("TIMER"), $.expression))),
+
+    // File system operations
+    kill_statement: $ => seq(kw("KILL"), $.expression),
+    name_statement: $ => seq(kw("NAME"), $.expression, kw("AS"), $.expression),
+    mkdir_statement: $ => seq(kw("MKDIR"), $.expression),
+    rmdir_statement: $ => seq(kw("RMDIR"), $.expression),
+    chdir_statement: $ => seq(kw("CHDIR"), $.expression),
+    files_statement: $ => seq(kw("FILES"), optional($.expression)),
+
+    // LOCK/UNLOCK
+    lock_statement: $ => seq(
+      kw("LOCK"), optional("#"), $.expression,
+      optional(seq(",", $.expression, optional(seq(kw("TO"), $.expression)))),
+    ),
+    unlock_statement: $ => seq(
+      kw("UNLOCK"), optional("#"), $.expression,
+      optional(seq(",", $.expression, optional(seq(kw("TO"), $.expression)))),
+    ),
+
+    // SEEK statement
+    seek_statement: $ => seq(kw("SEEK"), optional("#"), $.expression, ",", $.expression),
+
+    // LPRINT
+    lprint_statement: $ => seq(
+      kw("LPRINT"),
+      optional(seq(kw("USING"), $.expression, ";",)),
+      optional($.print_list),
+    ),
+
+    // PRINT USING (override print for USING variant)
+    print_using_statement: $ => seq(
+      kw("PRINT"), kw("USING"), $.expression, ";",
+      optional($.print_list),
+    ),
+
+    // OPTION BASE
+    option_base_statement: $ => seq(kw("OPTION"), kw("BASE"), choice("0", "1")),
+
+    // ON...GOTO/GOSUB with labels (extends common on_goto_statement)
+    on_goto_statement: $ => seq(
+      kw("ON"), $.expression,
+      choice(kw("GOTO"), kw("GOSUB")),
+      commaSep1(choice($.line_number, $.identifier)),
+    ),
+
+    // STRIG/PEN/COM event trapping
+    on_strig_statement: $ => seq(kw("ON"), kw("STRIG"), "(", $.expression, ")", kw("GOSUB"), choice($.line_number, $.identifier)),
+    strig_control_statement: $ => seq(kw("STRIG"), "(", $.expression, ")", choice(kw("ON"), kw("OFF"), kw("STOP"))),
+    on_pen_statement: $ => seq(kw("ON"), kw("PEN"), kw("GOSUB"), choice($.line_number, $.identifier)),
+    pen_control_statement: $ => seq(kw("PEN"), choice(kw("ON"), kw("OFF"), kw("STOP"))),
+    on_com_statement: $ => seq(kw("ON"), kw("COM"), "(", $.expression, ")", kw("GOSUB"), choice($.line_number, $.identifier)),
+    com_control_statement: $ => seq(kw("COM"), "(", $.expression, ")", choice(kw("ON"), kw("OFF"), kw("STOP"))),
+
+    // IOCTL
+    ioctl_statement: $ => seq(kw("IOCTL"), optional("#"), $.expression, ",", $.expression),
+
     // ====== Statement choice ======
     statement: $ => choice(
       ...common.statementChoices.map(fn => fn($)),
@@ -415,15 +510,70 @@ module.exports = grammar({
       $.static_statement,
       $.shared_statement,
       $.exit_statement,
+      // QuickBasic-specific
+      $.redim_statement,
+      $.erase_statement,
+      $.deftype_statement,
+      $.sleep_statement,
+      $.shell_statement,
+      $.randomize_statement,
+      $.kill_statement,
+      $.name_statement,
+      $.mkdir_statement,
+      $.rmdir_statement,
+      $.chdir_statement,
+      $.files_statement,
+      $.lock_statement,
+      $.unlock_statement,
+      $.seek_statement,
+      $.lprint_statement,
+      $.print_using_statement,
+      $.option_base_statement,
+      $.on_strig_statement,
+      $.strig_control_statement,
+      $.on_pen_statement,
+      $.pen_control_statement,
+      $.on_com_statement,
+      $.com_control_statement,
+      $.ioctl_statement,
     ),
 
-    // Override system_variable to include QBasic system variables
+    // Override system_variable to include QBasic/QuickBasic system variables
     system_variable: $ => choice(
       token(kw("INKEY$")),
       token(kw("TIMER")),
       token(kw("ERR")),
       token(kw("ERL")),
       token(kw("CSRLIN")),
+      token(kw("COMMAND$")),
+      token(kw("DATE$")),
+      token(kw("TIME$")),
+    ),
+
+    // Override builtin_function to add QuickBasic functions
+    builtin_function: $ => choice(
+      // Common builtins
+      token(kw("LEFT$")), token(kw("RIGHT$")), token(kw("MID$")),
+      token(kw("CHR$")), token(kw("STR$")), token(kw("STRING$")), token(kw("SPACE$")),
+      token(kw("INT")), token(kw("RND")), token(kw("ASC")), token(kw("LEN")),
+      token(kw("VAL")), token(kw("ABS")), token(kw("SQR")), token(kw("SIN")),
+      token(kw("COS")), token(kw("TAN")), token(kw("ATN")), token(kw("LOG")),
+      token(kw("EXP")), token(kw("SGN")), token(kw("PEEK")), token(kw("POS")),
+      token(kw("TAB")), token(kw("SPC")), token(kw("INSTR")),
+      token(kw("EOF")), token(kw("LOC")), token(kw("LOF")),
+      token(kw("FRE")), token(kw("POINT")),
+      // QuickBasic additions
+      token(kw("LBOUND")), token(kw("UBOUND")),
+      token(kw("LTRIM$")), token(kw("RTRIM$")),
+      token(kw("UCASE$")), token(kw("LCASE$")),
+      token(kw("ENVIRON$")),
+      token(kw("SADD")), token(kw("VARPTR")), token(kw("VARSEG")), token(kw("VARPTR$")),
+      token(kw("SSEG")), token(kw("SETMEM")),
+      token(kw("SEEK")), token(kw("IOCTL$")),
+      token(kw("CINT")), token(kw("CLNG")), token(kw("CSNG")), token(kw("CDBL")),
+      token(kw("FIX")), token(kw("HEX$")), token(kw("OCT$")),
+      token(kw("STICK")),
+      token(kw("ERDEV")), token(kw("ERDEV$")),
     ),
 
     primary_expression: $ => prec(14, choice(

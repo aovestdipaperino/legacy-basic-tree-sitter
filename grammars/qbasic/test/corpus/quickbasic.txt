@@ -1,0 +1,601 @@
+================
+$DYNAMIC metacommand
+================
+'$DYNAMIC
+
+---
+
+(program
+  (metacommand))
+
+================
+$STATIC metacommand
+================
+'$STATIC
+
+---
+
+(program
+  (metacommand))
+
+================
+$INCLUDE metacommand
+================
+'$INCLUDE: 'types.bi'
+
+---
+
+(program
+  (metacommand))
+
+================
+REDIM statement
+================
+REDIM a(100)
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (redim_statement
+          (dim_variable
+            (identifier)
+            (expression
+              (primary_expression
+                (literal
+                  (integer_literal))))))))))
+
+================
+REDIM PRESERVE
+================
+REDIM PRESERVE items$(n)
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (redim_statement
+          (dim_variable
+            (identifier)
+            (type_sigil)
+            (expression
+              (primary_expression
+                (variable
+                  (identifier))))))))))
+
+================
+ERASE statement
+================
+ERASE a, b, c
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (erase_statement
+          (identifier)
+          (identifier)
+          (identifier))))))
+
+================
+DEFINT letter range
+================
+DEFINT A-Z
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (deftype_statement
+          (letter_range))))))
+
+================
+DEFDBL multiple ranges
+================
+DEFDBL A-D, X
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (deftype_statement
+          (letter_range)
+          (letter_range))))))
+
+================
+SLEEP statement
+================
+SLEEP 5
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (sleep_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+SLEEP without argument
+================
+SLEEP
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (sleep_statement)))))
+
+================
+SHELL statement
+================
+SHELL "DIR"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (shell_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+RANDOMIZE TIMER
+================
+RANDOMIZE TIMER
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (randomize_statement)))))
+
+================
+RANDOMIZE with seed
+================
+RANDOMIZE 42
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (randomize_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+KILL statement
+================
+KILL "temp.dat"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (kill_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+NAME statement
+================
+NAME "old.dat" AS "new.dat"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (name_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+MKDIR statement
+================
+MKDIR "subdir"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (mkdir_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+RMDIR statement
+================
+RMDIR "subdir"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (rmdir_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+CHDIR statement
+================
+CHDIR "C:\PROG"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (chdir_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+FILES statement
+================
+FILES "*.BAS"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (files_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+LOCK statement
+================
+LOCK #1, 1 TO 10
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (lock_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+UNLOCK statement
+================
+UNLOCK #1
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (unlock_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+SEEK statement
+================
+SEEK #1, 100
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (seek_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+LPRINT statement
+================
+LPRINT "Hello"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (lprint_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+LPRINT USING
+================
+LPRINT USING "##.##"; x
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (lprint_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal))))
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (variable
+                    (identifier)))))))))))
+
+================
+PRINT USING
+================
+PRINT USING "##.##"; x
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (print_using_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal))))
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (variable
+                    (identifier)))))))))))
+
+================
+OPTION BASE
+================
+OPTION BASE 1
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (option_base_statement)))))
+
+================
+ON GOTO with labels
+================
+ON x GOTO label1, label2, label3
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (on_goto_statement
+          (expression
+            (primary_expression
+              (variable
+                (identifier))))
+          (identifier)
+          (identifier)
+          (identifier))))))
+
+================
+STRIG event trapping
+================
+STRIG(0) ON
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (strig_control_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+PEN control
+================
+PEN ON
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (pen_control_statement)))))
+
+================
+COM control
+================
+COM(1) ON
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (com_control_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+IOCTL statement
+================
+IOCTL #1, "command"
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (ioctl_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (string_literal)))))))))
+
+================
+LBOUND and UBOUND functions
+================
+x = LBOUND(arr) + UBOUND(arr)
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (function_call
+                    (builtin_function)
+                    (expression
+                      (primary_expression
+                        (variable
+                          (identifier)))))))
+              (expression
+                (primary_expression
+                  (function_call
+                    (builtin_function)
+                    (expression
+                      (primary_expression
+                        (variable
+                          (identifier))))))))))))))
+
+================
+LTRIM$ and RTRIM$ functions
+================
+x$ = LTRIM$(RTRIM$(s$))
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier)
+            (type_sigil))
+          (expression
+            (primary_expression
+              (function_call
+                (builtin_function)
+                (expression
+                  (primary_expression
+                    (function_call
+                      (builtin_function)
+                      (expression
+                        (primary_expression
+                          (variable
+                            (identifier)
+                            (type_sigil)))))))))))))))
+
+================
+DEFSTR single letter
+================
+DEFSTR S
+
+---
+
+(program
+  (line
+    (statement_list
+      (statement
+        (deftype_statement
+          (letter_range))))))

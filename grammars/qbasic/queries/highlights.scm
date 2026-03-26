@@ -6,6 +6,7 @@
 (string_literal) @string
 (comment) @comment
 (apostrophe_comment) @comment
+(metacommand) @keyword.directive
 (identifier) @variable
 (type_sigil) @punctuation.special
 (builtin_function) @function.builtin

@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-03-26
+
+### Added
+
+- **QuickBasic (QB 4.5) support** in the QBasic grammar (`tree-sitter-qbasic`)
+  - Metacommands: `'$INCLUDE`, `'$DYNAMIC`, `'$STATIC` (parsed as `metacommand` nodes with higher precedence than apostrophe comments)
+  - Dynamic arrays: `REDIM [PRESERVE]`, `ERASE`
+  - Type declarations: `DEFINT`, `DEFLNG`, `DEFSNG`, `DEFDBL`, `DEFSTR` with letter ranges
+  - File system: `KILL`, `NAME...AS`, `MKDIR`, `RMDIR`, `CHDIR`, `FILES`
+  - File operations: `LOCK`, `UNLOCK`, `SEEK`
+  - Output: `LPRINT [USING]`, `PRINT USING`
+  - Miscellaneous: `SLEEP`, `SHELL`, `RANDOMIZE [TIMER]`, `OPTION BASE`, `IOCTL`
+  - Event trapping: `ON STRIG/PEN/COM GOSUB`, `STRIG/PEN/COM ON/OFF/STOP`
+  - `ON...GOTO/GOSUB` extended to accept labels (not just line numbers)
+  - 25 new built-in functions: `LBOUND`, `UBOUND`, `LTRIM$`, `RTRIM$`, `UCASE$`, `LCASE$`, `CINT`, `CLNG`, `CSNG`, `CDBL`, `FIX`, `HEX$`, `OCT$`, `SADD`, `VARPTR`, `VARSEG`, `VARPTR$`, `SSEG`, `SETMEM`, `SEEK`, `IOCTL$`, `ENVIRON$`, `STICK`, `ERDEV`, `ERDEV$`
+  - 3 new system variables: `COMMAND$`, `DATE$`, `TIME$`
+  - Highlight query for `metacommand` as `@keyword.directive`
+  - 34 new tree-sitter tests (68 total for QBasic/QuickBasic)
+
 ## [0.1.0] - 2026-03-26
 
 ### Added
@@ -53,4 +72,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Makefile with `generate`, `test-grammar`, `build`, `test`, `all`, `clean`, `publish-prep` targets
   - `tree-sitter.json` per grammar for CLI integration
 
+[0.2.0]: https://github.com/aovestdipaperino/legacy-basic-tree-sitter/releases/tag/v0.2.0
 [0.1.0]: https://github.com/aovestdipaperino/legacy-basic-tree-sitter/releases/tag/v0.1.0

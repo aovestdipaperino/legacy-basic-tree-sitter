@@ -62,6 +62,10 @@
           "named": true
         },
         {
+          "type": "metacommand",
+          "named": true
+        },
+        {
           "type": "select_case_statement",
           "named": true
         }
@@ -132,6 +136,10 @@
           "named": true
         },
         {
+          "type": "metacommand",
+          "named": true
+        },
+        {
           "type": "select_case_statement",
           "named": true
         }
@@ -156,6 +164,10 @@
         },
         {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "metacommand",
           "named": true
         },
         {
@@ -186,6 +198,21 @@
     "fields": {},
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chdir_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -261,6 +288,21 @@
     "fields": {},
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "com_control_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -385,6 +427,21 @@
     }
   },
   {
+    "type": "deftype_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "letter_range",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "dim_statement",
     "named": true,
     "fields": {},
@@ -451,6 +508,10 @@
           "named": true
         },
         {
+          "type": "metacommand",
+          "named": true
+        },
+        {
           "type": "select_case_statement",
           "named": true
         }
@@ -493,6 +554,10 @@
           "named": true
         },
         {
+          "type": "metacommand",
+          "named": true
+        },
+        {
           "type": "select_case_statement",
           "named": true
         }
@@ -524,6 +589,10 @@
           "named": true
         },
         {
+          "type": "metacommand",
+          "named": true
+        },
+        {
           "type": "select_case_statement",
           "named": true
         }
@@ -534,6 +603,21 @@
     "type": "end_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "erase_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "exit_statement",
@@ -577,6 +661,21 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "files_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -653,6 +752,10 @@
         },
         {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "metacommand",
           "named": true
         },
         {
@@ -785,6 +888,21 @@
     }
   },
   {
+    "type": "ioctl_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "key_control_statement",
     "named": true,
     "fields": {},
@@ -805,6 +923,21 @@
     "fields": {},
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "kill_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -847,6 +980,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "letter_range",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "line",
@@ -986,6 +1124,40 @@
     }
   },
   {
+    "type": "lock_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lprint_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "print_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "lset_statement",
     "named": true,
     "fields": {},
@@ -1005,6 +1177,36 @@
     }
   },
   {
+    "type": "mkdir_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "name_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "next_statement",
     "named": true,
     "fields": {},
@@ -1014,6 +1216,29 @@
       "types": [
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "on_com_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "line_number",
           "named": true
         }
       ]
@@ -1051,6 +1276,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "line_number",
           "named": true
         }
@@ -1059,6 +1288,48 @@
   },
   {
     "type": "on_key_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "line_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "on_pen_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "line_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "on_strig_statement",
     "named": true,
     "fields": {},
     "children": {
@@ -1117,6 +1388,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "option_base_statement",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "paint_statement",
@@ -1200,6 +1476,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "pen_control_statement",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "play_statement",
@@ -1331,6 +1612,25 @@
     }
   },
   {
+    "type": "print_using_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "print_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "program",
     "named": true,
     "root": true,
@@ -1353,6 +1653,10 @@
         },
         {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "metacommand",
           "named": true
         },
         {
@@ -1401,6 +1705,21 @@
     }
   },
   {
+    "type": "randomize_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "read_statement",
     "named": true,
     "fields": {},
@@ -1410,6 +1729,21 @@
       "types": [
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "redim_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dim_variable",
           "named": true
         }
       ]
@@ -1444,6 +1778,21 @@
         },
         {
           "type": "line_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rmdir_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -1499,6 +1848,21 @@
     }
   },
   {
+    "type": "seek_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "select_case_statement",
     "named": true,
     "fields": {},
@@ -1531,6 +1895,36 @@
       "types": [
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "shell_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sleep_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -1584,6 +1978,10 @@
           "named": true
         },
         {
+          "type": "chdir_statement",
+          "named": true
+        },
+        {
           "type": "circle_statement",
           "named": true
         },
@@ -1601,6 +1999,10 @@
         },
         {
           "type": "color_statement",
+          "named": true
+        },
+        {
+          "type": "com_control_statement",
           "named": true
         },
         {
@@ -1636,6 +2038,10 @@
           "named": true
         },
         {
+          "type": "deftype_statement",
+          "named": true
+        },
+        {
           "type": "dim_statement",
           "named": true
         },
@@ -1648,11 +2054,19 @@
           "named": true
         },
         {
+          "type": "erase_statement",
+          "named": true
+        },
+        {
           "type": "exit_statement",
           "named": true
         },
         {
           "type": "field_statement",
+          "named": true
+        },
+        {
+          "type": "files_statement",
           "named": true
         },
         {
@@ -1684,11 +2098,19 @@
           "named": true
         },
         {
+          "type": "ioctl_statement",
+          "named": true
+        },
+        {
           "type": "key_control_statement",
           "named": true
         },
         {
           "type": "key_statement",
+          "named": true
+        },
+        {
+          "type": "kill_statement",
           "named": true
         },
         {
@@ -1716,11 +2138,31 @@
           "named": true
         },
         {
+          "type": "lock_statement",
+          "named": true
+        },
+        {
+          "type": "lprint_statement",
+          "named": true
+        },
+        {
           "type": "lset_statement",
           "named": true
         },
         {
+          "type": "mkdir_statement",
+          "named": true
+        },
+        {
+          "type": "name_statement",
+          "named": true
+        },
+        {
           "type": "next_statement",
+          "named": true
+        },
+        {
+          "type": "on_com_statement",
           "named": true
         },
         {
@@ -1736,11 +2178,23 @@
           "named": true
         },
         {
+          "type": "on_pen_statement",
+          "named": true
+        },
+        {
+          "type": "on_strig_statement",
+          "named": true
+        },
+        {
           "type": "on_timer_statement",
           "named": true
         },
         {
           "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "option_base_statement",
           "named": true
         },
         {
@@ -1753,6 +2207,10 @@
         },
         {
           "type": "pcopy_statement",
+          "named": true
+        },
+        {
+          "type": "pen_control_statement",
           "named": true
         },
         {
@@ -1772,6 +2230,10 @@
           "named": true
         },
         {
+          "type": "print_using_statement",
+          "named": true
+        },
+        {
           "type": "pset_statement",
           "named": true
         },
@@ -1780,7 +2242,15 @@
           "named": true
         },
         {
+          "type": "randomize_statement",
+          "named": true
+        },
+        {
           "type": "read_statement",
+          "named": true
+        },
+        {
+          "type": "redim_statement",
           "named": true
         },
         {
@@ -1796,6 +2266,10 @@
           "named": true
         },
         {
+          "type": "rmdir_statement",
+          "named": true
+        },
+        {
           "type": "rset_statement",
           "named": true
         },
@@ -1808,7 +2282,19 @@
           "named": true
         },
         {
+          "type": "seek_statement",
+          "named": true
+        },
+        {
           "type": "shared_statement",
+          "named": true
+        },
+        {
+          "type": "shell_statement",
+          "named": true
+        },
+        {
+          "type": "sleep_statement",
           "named": true
         },
         {
@@ -1824,11 +2310,19 @@
           "named": true
         },
         {
+          "type": "strig_control_statement",
+          "named": true
+        },
+        {
           "type": "swap_statement",
           "named": true
         },
         {
           "type": "timer_control_statement",
+          "named": true
+        },
+        {
+          "type": "unlock_statement",
           "named": true
         },
         {
@@ -1902,6 +2396,21 @@
     "fields": {}
   },
   {
+    "type": "strig_control_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "sub_definition",
     "named": true,
     "fields": {
@@ -1930,6 +2439,10 @@
         },
         {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "metacommand",
           "named": true
         },
         {
@@ -2034,6 +2547,21 @@
     "fields": {},
     "children": {
       "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unlock_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -2208,6 +2736,14 @@
     "named": false
   },
   {
+    "type": "0",
+    "named": false
+  },
+  {
+    "type": "1",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -2285,6 +2821,10 @@
   },
   {
     "type": "line_number",
+    "named": true
+  },
+  {
+    "type": "metacommand",
     "named": true
   },
   {

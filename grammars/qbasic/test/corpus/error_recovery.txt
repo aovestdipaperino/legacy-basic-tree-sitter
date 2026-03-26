@@ -8,8 +8,7 @@ PRINT "OK"
 
 (program
   (ERROR
-    (UNEXPECTED '@')
-    (identifier))
+    (UNEXPECTED '@'))
   (line
     (statement_list
       (statement
