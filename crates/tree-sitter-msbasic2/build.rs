@@ -1,0 +1,28 @@
+fn main() {
+    let manifest_dir = std::path::PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").unwrap());
+
+    let grammar_src = manifest_dir.join("grammar-src");
+    let src_dir = if grammar_src.exists() {
+        grammar_src
+    } else {
+        manifest_dir.join("../../grammars/msbasic2/src")
+    };
+
+    let mut c_config = cc::Build::new();
+    c_config.std("c11").include(&src_dir);
+
+    #[cfg(target_env = "msvc")]
+    c_config.flag("-utf-8");
+
+    let parser_path = src_dir.join("parser.c");
+    c_config.file(&parser_path);
+    println!("cargo:rerun-if-changed={}", parser_path.display());
+
+    let scanner_path = src_dir.join("scanner.c");
+    if scanner_path.exists() {
+        c_config.file(&scanner_path);
+        println!("cargo:rerun-if-changed={}", scanner_path.display());
+    }
+
+    c_config.compile("tree-sitter-msbasic2");
+}

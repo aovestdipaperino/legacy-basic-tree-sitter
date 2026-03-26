@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for Microsoft BASIC 2.0",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/example/tree-sitter-basic"
+    }
+  },
+  "grammars": [
+    {
+      "name": "msbasic2",
+      "scope": "source.msbasic2",
+      "file-types": ["bas"],
+      "injection-regex": "msbasic2"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+================
+PRINT with semicolons
+================
+10 PRINT "A";"B"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+Question mark as PRINT
+================
+10 ? "HELLO"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+FOR NEXT loop
+================
+10 FOR I=1 TO 10
+20 NEXT I
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (for_statement
+          (variable
+            (identifier))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (next_statement
+          (variable
+            (identifier)))))))
+
+================
+GOSUB and RETURN
+================
+10 GOSUB 100
+20 RETURN
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (gosub_statement
+          (line_number)))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (return_statement)))))
+
+================
+DATA and READ
+================
+10 DATA 1,2,3
+20 READ A,B,C
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (data_statement
+          (literal
+            (integer_literal))
+          (literal
+            (integer_literal))
+          (literal
+            (integer_literal))))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (read_statement
+          (variable
+            (identifier))
+          (variable
+            (identifier))
+          (variable
+            (identifier)))))))

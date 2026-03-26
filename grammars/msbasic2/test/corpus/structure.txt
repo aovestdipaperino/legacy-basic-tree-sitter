@@ -1,0 +1,55 @@
+================
+Simple END statement
+================
+10 END
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (end_statement)))))
+
+================
+Multi-statement line with colon
+================
+10 PRINT "A":PRINT "B"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal))))))))
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+REM comment
+================
+10 REM THIS IS A COMMENT
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (comment)))))

@@ -1,0 +1,27 @@
+[package]
+name = "tree-sitter-msbasic2"
+version = "0.1.0"
+edition = "2021"
+description = "Tree-sitter grammar for Microsoft BASIC 2.0"
+license = "MIT"
+build = "build.rs"
+autoexamples = false
+include = [
+  "Cargo.toml",
+  "build.rs",
+  "src/**",
+  "grammar-src/**",
+  "queries/**",
+]
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1"
+
+[dev-dependencies]
+tree-sitter = "0.25"
