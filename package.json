@@ -1,0 +1,22 @@
+{
+  "name": "tree-sitter-basic",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammars for 80s BASIC dialects",
+  "tree-sitter": [
+    {
+      "path": "grammars/msbasic2",
+      "scope": "source.msbasic2",
+      "file-types": ["bas"]
+    },
+    {
+      "path": "grammars/gwbasic",
+      "scope": "source.gwbasic",
+      "file-types": ["bas"]
+    },
+    {
+      "path": "grammars/qbasic",
+      "scope": "source.qbasic",
+      "file-types": ["bas", "bi", "bm"]
+    }
+  ]
+}
