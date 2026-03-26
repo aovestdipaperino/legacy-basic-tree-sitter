@@ -1,0 +1,155 @@
+================
+CLEAR without argument
+================
+10 CLEAR
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (clear_statement)))))
+
+================
+CLEAR with memory size
+================
+10 CLEAR 1000
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (clear_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+RUN without argument
+================
+10 RUN
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (run_statement)))))
+
+================
+RUN with line number
+================
+10 RUN 100
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (run_statement
+          (line_number))))))
+
+================
+LIST statement
+================
+10 LIST
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (list_statement)))))
+
+================
+CONT statement
+================
+10 CONT
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (cont_statement)))))
+
+================
+NEW statement
+================
+10 NEW
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (new_statement)))))
+
+================
+LOAD statement
+================
+10 LOAD "PROG"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (load_statement
+          (string_literal))))))
+
+================
+SAVE statement
+================
+10 SAVE "PROG"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (save_statement
+          (string_literal))))))
+
+================
+USR function call
+================
+10 X=USR(42)
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (primary_expression
+              (usr_call
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer_literal))))))))))))

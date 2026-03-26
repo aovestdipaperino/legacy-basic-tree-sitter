@@ -4,6 +4,7 @@ extern "C" {
     fn tree_sitter_msbasic2() -> *const ();
 }
 
+/// Language function for Microsoft BASIC 2.0.
 pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_msbasic2) };
 
 #[cfg(test)]
