@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for GW-BASIC",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/example/tree-sitter-basic"
+    }
+  },
+  "grammars": [
+    {
+      "name": "gwbasic",
+      "scope": "source.gwbasic",
+      "file-types": ["bas"],
+      "injection-regex": "gwbasic"
+    }
+  ]
+}

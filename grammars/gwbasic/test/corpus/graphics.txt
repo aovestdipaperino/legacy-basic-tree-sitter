@@ -1,0 +1,101 @@
+================
+SCREEN statement
+================
+10 SCREEN 1
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (screen_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+COLOR statement
+================
+10 COLOR 1,0
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (color_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+PSET statement
+================
+10 PSET (100,50),3
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (pset_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+BEEP statement
+================
+10 BEEP
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (beep_statement)))))
+
+================
+SOUND statement
+================
+10 SOUND 440,18
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (sound_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))

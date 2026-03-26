@@ -1,0 +1,85 @@
+================
+OPEN FOR INPUT
+================
+10 OPEN "FILE.DAT" FOR INPUT AS #1
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (open_statement
+          (expression
+            (primary_expression
+              (literal
+                (string_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+CLOSE file
+================
+10 CLOSE #1
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (close_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))
+
+================
+INPUT from file
+================
+10 INPUT #1,A,B
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (input_file_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (variable
+            (identifier))
+          (variable
+            (identifier)))))))
+
+================
+PRINT to file
+================
+10 PRINT #1,"HELLO"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (print_file_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))

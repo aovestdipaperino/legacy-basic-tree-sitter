@@ -189,6 +189,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "tree-sitter-gwbasic"
+version = "0.1.0"
+dependencies = [
+ "cc",
+ "tree-sitter",
+ "tree-sitter-language",
+]
+
+[[package]]
 name = "tree-sitter-language"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"

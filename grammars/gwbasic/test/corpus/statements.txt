@@ -1,0 +1,293 @@
+================
+WHILE WEND loop
+================
+10 WHILE X<10
+20 X=X+1
+30 WEND
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (while_statement
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (variable
+                    (identifier))))
+              (expression
+                (primary_expression
+                  (literal
+                    (integer_literal))))))))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (variable
+                    (identifier))))
+              (expression
+                (primary_expression
+                  (literal
+                    (integer_literal))))))))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (wend_statement)))))
+
+================
+SWAP statement
+================
+10 SWAP A,B
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (swap_statement
+          (variable
+            (identifier))
+          (variable
+            (identifier)))))))
+
+================
+LINE INPUT statement
+================
+10 LINE INPUT "NAME? ";N$
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (line_input_statement
+          (string_literal)
+          (variable
+            (identifier)
+            (type_sigil)))))))
+
+================
+Apostrophe comment standalone
+================
+10 'THIS IS A COMMENT
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (apostrophe_comment)))))
+
+================
+Apostrophe comment after statement
+================
+10 X=1 'SET X TO 1
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (let_statement
+          (variable
+            (identifier))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))))
+      (apostrophe_comment))))
+
+================
+PRINT with semicolons
+================
+10 PRINT "A";"B"
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
+
+================
+FOR NEXT loop
+================
+10 FOR I=1 TO 10
+20 NEXT I
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (for_statement
+          (variable
+            (identifier))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (next_statement
+          (variable
+            (identifier)))))))
+
+================
+GOSUB and RETURN
+================
+10 GOSUB 100
+20 RETURN
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (gosub_statement
+          (line_number)))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (return_statement)))))
+
+================
+DATA and READ
+================
+10 DATA 1,2,3
+20 READ A,B,C
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (data_statement
+          (literal
+            (integer_literal))
+          (literal
+            (integer_literal))
+          (literal
+            (integer_literal))))))
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (read_statement
+          (variable
+            (identifier))
+          (variable
+            (identifier))
+          (variable
+            (identifier)))))))
+
+================
+ON ERROR GOTO
+================
+10 ON ERROR GOTO 100
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (on_error_statement
+          (line_number))))))
+
+================
+RESUME NEXT
+================
+10 RESUME NEXT
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (resume_statement)))))
+
+================
+CLS statement
+================
+10 CLS
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (cls_statement)))))
+
+================
+LOCATE statement
+================
+10 LOCATE 10,20
+
+---
+
+(program
+  (line
+    (line_number)
+    (statement_list
+      (statement
+        (locate_statement
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal))))
+          (expression
+            (primary_expression
+              (literal
+                (integer_literal)))))))))

@@ -1,0 +1,25 @@
+================
+Error recovery after garbage line
+================
+10 @@@ GARBAGE
+20 PRINT "OK"
+
+---
+
+(program
+  (line
+    (line_number)
+    (ERROR
+      (UNEXPECTED '@')
+      (variable
+        (identifier))
+      (line_number))
+    (statement_list
+      (statement
+        (print_statement
+          (print_list
+            (print_item
+              (expression
+                (primary_expression
+                  (literal
+                    (string_literal)))))))))))
