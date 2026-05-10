@@ -3,3 +3,4 @@ node_modules/
 crates/*/grammar-src/
 crates/*/queries/
 *.dylib
+.tokensave/
