@@ -1,5 +1,7 @@
 # legacy-basic-tree-sitter
 
+[![GitHub stars](https://img.shields.io/github/stars/aovestdipaperino/legacy-basic-tree-sitter?logo=github&color=brightgreen)](https://github.com/aovestdipaperino/legacy-basic-tree-sitter/stargazers)
+
 Tree-sitter grammars for 80s BASIC dialects: **Microsoft BASIC 2.0**, **GW-BASIC**, and **QBasic**.
 
 Built for code analysis of legacy BASIC programs — migration, transpilation, documentation, and static analysis.
